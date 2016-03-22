@@ -6,6 +6,7 @@ var GameScreen = {
     preload : function() {
         //loads an image named 'logo'
         game.load.image('logo', '/assets/images/mission_bit_logo.png');
+        game.load.image('logo2', '/assets/images/mission_bit_logo.png');
     },
     
     //the create method is run after the preload method
@@ -21,8 +22,8 @@ var GameScreen = {
         this.cursor = game.input.keyboard.createCursorKeys();
         
         //creates a sprite with the 'logo' image at (200, 400) and assigns it to a variable
-        this.mc = game.add.sprite(200, 400, 'logo');
-        
+        this.mc = game.add.sprite(50, 208, 'logo');
+        this.mc123 = game.add.sprite(590, 208, 'logo2');
         //enables the physics system for the mc
         game.physics.arcade.enable(this.mc);
         
