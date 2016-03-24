@@ -5,9 +5,8 @@ var GameScreen = {
     //it is where we load our assets
     preload : function() {
         //loads an image named 'logo'
-        game.load.image('logo', '/assets/images/mission_bit_logo.png');
-        game.load.image('logo2', '/assets/images/mission_bit_logo.png');
-    },
+        game.load.image('logo', 'assets/images/basketball.png');
+        },
     
     //the create method is run after the preload method
     //it is where we set up the basics of the game, essentially what it will look like when we start the game
@@ -22,8 +21,7 @@ var GameScreen = {
         this.cursor = game.input.keyboard.createCursorKeys();
         
         //creates a sprite with the 'logo' image at (200, 400) and assigns it to a variable
-        this.mc = game.add.sprite(50, 208, 'logo');
-        this.mc123 = game.add.sprite(590, 208, 'logo2');
+        this.mc = game.add.sprite(50, 4308, 'logo');
         //enables the physics system for the mc
         game.physics.arcade.enable(this.mc);
         
@@ -44,10 +42,6 @@ var GameScreen = {
             this.mc.body.velocity.x = 350;
         } else if (this.cursor.left.isDown) { //if the left arrow is pressed, move to the left
             this.mc.body.velocity.x = -350;
-        } else if (this.cursor.up.isDown){ //if the up arrow is pressed, move upwards
-            this.mc.body.velocity.y = -350;
-        } else if (this.cursor.down.isDown) { //if the down arrow is pressed, move downwards
-            this.mc.body.velocity.y = 350;
         } else { //if no arrow keys are being pressed, stop moving
             this.mc.body.velocity.x = 0;
             this.mc.body.velocity.y = 0;
