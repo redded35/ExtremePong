@@ -6,6 +6,7 @@ var GameScreen = {
     preload : function() {
         //loads an image named 'logo'
         game.load.image('logo', 'assets/images/basketball.png');
+        
         },
     
     //the create method is run after the preload method
@@ -22,6 +23,8 @@ var GameScreen = {
         
         //creates a sprite with the 'logo' image at (200, 400) and assigns it to a variable
         this.mc = game.add.sprite(50, 4308, 'logo');
+        this.mc.scale.x = 0.25;
+        this.mc.scale.y = 0.25;
         //enables the physics system for the mc
         game.physics.arcade.enable(this.mc);
         
