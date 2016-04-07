@@ -18,7 +18,7 @@ var TitleScreen = {
         //adds a button with image 'start' at location (200, 180) that calls the method startGame when it is clicked on
         this.add.button(200, 180, 'start', this.startGame, this);
         //makes the background color of the whole screen periwinkle
-        game.stage.backgroundColor = '#CCCFFF';
+        game.stage.backgroundColor = '#1C3AA7';
     },
 
     //this is a method we created and named ourselves
