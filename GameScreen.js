@@ -13,6 +13,7 @@ var GameScreen = {
         game.load.image('bg', '/assets/images/basketball-court-backgrounds1.jpg');
         //loads an image named 'start'
         game.load.image('start', '/assets/images/start.png');
+        game.load.image(' blocker1','/Users/benthebat/Library/Caches/TemporaryItems/lebron-james-as-knick-psd-451835.png')
     },
     
     //the create method is run after the preload method
@@ -36,10 +37,11 @@ var GameScreen = {
         this.hoop.scale.y = 0.50;
         game.physics.arcade.enable(this.hoop);
         this.hoop.body.immovable = true;
-        this.hoop.body.velocity.x = 800;
+        this.hoop.body.velocity.x = 600;
         this.hoop.body.collideWorldBounds = true;
         this.hoop.body.bounce.x = 1;
         
+        this.blocker1 = game.add.sprite(game.world.centerX - 100, 0, 'blocker1');
         //creates a sprite with the 'logo' image at (200, 400) and assigns it to a variable
         this.mc = game.add.sprite(50, 4308, 'logo');
         this.mc.scale.x = 0.16;
@@ -50,10 +52,10 @@ var GameScreen = {
         //make it so the mc can't leave the screen
         this.mc.body.collideWorldBounds = true;
         
-        var style = {font: '35px Arial', fill:'#FF0', align: 'center'};
-        this.scoring = game.add.text(503,410, "Made: " + score.toString(), style);
+        var style = {font: '80px Arial', fill:'#FFFFFF', align: 'center'};
+        this.scoring = game.add.text(100,100, score.toString(), style);
         
-        this.missing = game.add.text(480,440, "Missed: " + misses.toString(), style);
+        this.missing = game.add.text(100,300, misses.toString(), style);
         
     },
     
@@ -68,7 +70,7 @@ var GameScreen = {
             this.mc.y = 4308;
             isShooting = false;
             misses++;
-            this.missing.text = "Missed: "+misses;
+            this.missing.text = misses;
         }
 
         //if the right arrow is pressed, move to the right        
@@ -94,7 +96,7 @@ var GameScreen = {
             this.mc.y = 4308;
             isShooting = false;
             score++;
-            this.scoring.text = "Made: "+ score;
+            this.scoring.text = score;
         }
     }
 };
