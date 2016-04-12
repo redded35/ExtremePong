@@ -36,7 +36,7 @@ var GameScreen = {
         this.hoop.scale.y = 0.50;
         game.physics.arcade.enable(this.hoop);
         this.hoop.body.immovable = true;
-        this.hoop.body.velocity.x = 600;
+        this.hoop.body.velocity.x = 800;
         this.hoop.body.collideWorldBounds = true;
         this.hoop.body.bounce.x = 1;
         
@@ -50,10 +50,10 @@ var GameScreen = {
         //make it so the mc can't leave the screen
         this.mc.body.collideWorldBounds = true;
         
-        var style = {font: '80px Arial', fill:'#FFFFFF', align: 'center'};
-        this.scoring = game.add.text(100,100, score.toString(), style);
+        var style = {font: '35px Arial', fill:'#FF0', align: 'center'};
+        this.scoring = game.add.text(503,410, "Made: " + score.toString(), style);
         
-        this.missing = game.add.text(100,300, misses.toString(), style);
+        this.missing = game.add.text(480,440, "Missed: " + misses.toString(), style);
         
     },
     
@@ -68,7 +68,7 @@ var GameScreen = {
             this.mc.y = 4308;
             isShooting = false;
             misses++;
-            this.missing.text = misses;
+            this.missing.text = "Missed: "+misses;
         }
 
         //if the right arrow is pressed, move to the right        
@@ -94,7 +94,7 @@ var GameScreen = {
             this.mc.y = 4308;
             isShooting = false;
             score++;
-            this.scoring.text = score;
+            this.scoring.text = "Made: "+ score;
         }
     }
 };

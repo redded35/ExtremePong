@@ -5,18 +5,20 @@ var TitleScreen = {
     //it is where we load our assets
     preload : function() {
         //loads an image named 'logo'
-        game.load.image('logo', '/assets/images/mission_bit_logo.png');
+        game.load.image('logo', '/assets/images/Vicous Basketball.png');
         //loads an image named 'start'
-        game.load.image('start', '/assets/images/start.png');
+        game.load.image('start', '/assets/images/Start Game!.png');
     },
     
     //the create method is run after the preload method
     //it is where we set up the basics of the game, essentially what it will look like when we start the game
     create: function () {
         //adds an image with image 'logo' at (290, 100)
-        this.add.image(290, 100, 'logo');
+        this.add.image(180, 20, 'logo');
         //adds a button with image 'start' at location (200, 180) that calls the method startGame when it is clicked on
-        this.add.button(200, 180, 'start', this.startGame, this);
+        this.start = this.add.button(195, 385, 'start', this.startGame, this);
+        this.start.scale.x = 0.75;
+        this.start.scale.y = 0.75;
         //makes the background color of the whole screen periwinkle
         game.stage.backgroundColor = '#1C3AA7';
     },
