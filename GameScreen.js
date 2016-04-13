@@ -36,7 +36,7 @@ var GameScreen = {
         this.hoop.scale.y = 0.50;
         game.physics.arcade.enable(this.hoop);
         this.hoop.body.immovable = true;
-        this.hoop.body.velocity.x = 800;
+        this.hoop.body.velocity.x = 650;
         this.hoop.body.collideWorldBounds = true;
         this.hoop.body.bounce.x = 1;
         
@@ -50,10 +50,9 @@ var GameScreen = {
         //make it so the mc can't leave the screen
         this.mc.body.collideWorldBounds = true;
         
-        var style = {font: '35px Arial', fill:'#FF0', align: 'center'};
-        this.scoring = game.add.text(503,410, "Made: " + score.toString(), style);
-        
-        this.missing = game.add.text(480,440, "Missed: " + misses.toString(), style);
+        var style = {font: '35px Arial', fill:'#1C3AA7', align: 'center'};
+        this.scoring = game.add.text(490,410, "Made: " + score.toString(), style);
+        this.missing = game.add.text(468,440, "Missed: " + misses.toString(), style);
         
     },
     
