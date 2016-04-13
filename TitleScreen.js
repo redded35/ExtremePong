@@ -19,6 +19,10 @@ var TitleScreen = {
         this.start = this.add.button(195, 385, 'start', this.startGame, this);
         this.start.scale.x = 0.75;
         this.start.scale.y = 0.75;
+        
+        this.startSurival = this.add.button(0, 0, 'start', this.startSurvival, this);
+        this.start.scale.x = 0.75;
+        this.start.scale.y = 0.75;
         //makes the background color of the whole screen periwinkle
         game.stage.backgroundColor = '#1C3AA7';
     },
@@ -28,6 +32,10 @@ var TitleScreen = {
     startGame: function() {
         //start the state 'GameScreen', as defined in the directory
         this.state.start('GameScreen');
+    },
+    
+    startSurvival: function() {
+        this.state.start('SurvivalScreen');
     }
     
 };
