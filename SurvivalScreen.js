@@ -1,6 +1,6 @@
 var isShooting = false;
 var score = 0;
-var misses = 0;
+var lives = 10;
 //creates a GameScreen object
 var SurvivalScreen = {
     
@@ -10,7 +10,7 @@ var SurvivalScreen = {
         //loads an image named 'logo'
         game.load.image('logo', 'assets/images/basketball.png');
         game.load.image('hoop', '/assets/images/basketball-net.jpg');
-        //game.load.image('bg', '/assets/images/basketball-court-backgrounds1.jpg');
+        game.load.image('bg', '/assets/images/basketball-court-backgrounds1.jpg');
         //loads an image named 'start'
         game.load.image('start', '/assets/images/start.png');
     },
@@ -52,7 +52,7 @@ var SurvivalScreen = {
         
         var style = {font: '35px Arial', fill:'#1C3AA7', align: 'center'};
         this.scoring = game.add.text(490,410, "Made: " + score.toString(), style);
-        this.missing = game.add.text(468,440, "Missed: " + misses.toString(), style);
+        this.missing = game.add.text(490,440, "Lives: " + lives.toString(), style);
         
     },
     
@@ -66,8 +66,8 @@ var SurvivalScreen = {
             this.mc.x = 50;
             this.mc.y = 4308;
             isShooting = false;
-            misses++;
-            this.missing.text = "Missed: "+misses;
+            lives--;
+            this.missing.text = "Lives: "+lives;
         }
 
         //if the right arrow is pressed, move to the right        
@@ -84,7 +84,11 @@ var SurvivalScreen = {
             } else { //if no arrow keys are being pressed, stop moving
                 this.mc.body.velocity.x = 0;
             }
-        }    
+        }
+        
+        if (lives < 1) {
+            this.state.start('TitleScreen');
+        }
     },
     
     hit: function(hoop, mc) {
