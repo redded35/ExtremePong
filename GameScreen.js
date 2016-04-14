@@ -13,6 +13,7 @@ var GameScreen = {
         game.load.image('bg', '/assets/images/basketball-court-backgrounds1.jpg');
         //loads an image named 'start'
         game.load.image('start', '/assets/images/start.png');
+        game.load.image('lebron', '/assets/images/lebron.png');
     },
     
     //the create method is run after the preload method
@@ -40,6 +41,15 @@ var GameScreen = {
         this.hoop.body.collideWorldBounds = true;
         this.hoop.body.bounce.x = 1;
         
+        this.lebron = game.add.sprite(30,100, 'lebron');
+        this.lebron.scale.x = 0.2;
+        this.lebron.scale.y = 0.2;
+        game.physics.arcade.enable(this.lebron);
+        this.lebron.body.immovable = true;
+        this.lebron.body.velocity.x = 350;
+        this.lebron.body.collideWorldBounds = true;
+        this.lebron.body.bounce.x = 1;
+        
         //creates a sprite with the 'logo' image at (200, 400) and assigns it to a variable
         this.mc = game.add.sprite(50, 4308, 'logo');
         this.mc.scale.x = 0.16;
@@ -61,6 +71,7 @@ var GameScreen = {
     update: function() {
         
         game.physics.arcade.collide(this.hoop, this.mc, this.hit, null, this);
+        game.physics.arcade.collide(this.lebron, this.mc);
         if(this.mc.y == 0){
             console.log("test");
             this.mc.x = 50;
