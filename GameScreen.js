@@ -71,7 +71,7 @@ var GameScreen = {
     update: function() {
         
         game.physics.arcade.collide(this.hoop, this.mc, this.hit, null, this);
-        game.physics.arcade.collide(this.lebron, this.mc);
+        game.physics.arcade.collide(this.lebron, this.mc, this.blocked, null, this);
         if(this.mc.y == 0){
             console.log("test");
             this.mc.x = 50;
@@ -95,7 +95,8 @@ var GameScreen = {
             } else { //if no arrow keys are being pressed, stop moving
                 this.mc.body.velocity.x = 0;
             }
-        }    
+        }   
+        
     },
     
     hit: function(hoop, mc) {
@@ -105,6 +106,16 @@ var GameScreen = {
             isShooting = false;
             score++;
             this.scoring.text = "Made: "+ score;
+        }
+    },
+    
+    blocked: function(lebron, mc) {
+        if (mc.body.touching.up) {
+            this.mc.x = 50;
+            this.mc.y = 4308;
+            misses++;
+            this.missing.text = "Missed: "+misses;
+            isShooting = false;
         }
     }
 };
