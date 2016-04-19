@@ -109,7 +109,7 @@ var GameScreen = {
         }
     },
     
-    blocked: function(lebron, mc) {
+blocked: function(lebron, mc) {
         if (mc.body.touching.up) {
             this.mc.x = 50;
             this.mc.y = 4308;
