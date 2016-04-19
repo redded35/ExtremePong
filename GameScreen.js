@@ -1,6 +1,14 @@
 var isShooting = false;
 var score = 0;
 var misses = 0;
+
+var time = 200;
+
+var endFlag = false;
+
+var style = {font: '35px Arial', fill:'#1C3AA7', align: 'center'};
+
+
 //creates a GameScreen object
 var GameScreen = {
     
@@ -60,42 +68,57 @@ var GameScreen = {
         //make it so the mc can't leave the screen
         this.mc.body.collideWorldBounds = true;
         
-        var style = {font: '35px Arial', fill:'#1C3AA7', align: 'center'};
         this.scoring = game.add.text(490,410, "Made: " + score.toString(), style);
         this.missing = game.add.text(468,440, "Missed: " + misses.toString(), style);
+        this.timer = game.add.text(0,0, "Time: " + time.toString(), style);
         
     },
     
     //function that is called 60 times per second
     //where we put the logic of the game
     update: function() {
-        
-        game.physics.arcade.collide(this.hoop, this.mc, this.hit, null, this);
-        game.physics.arcade.collide(this.lebron, this.mc, this.blocked, null, this);
-        if(this.mc.y == 0){
-            console.log("test");
-            this.mc.x = 50;
-            this.mc.y = 4308;
-            isShooting = false;
-            misses++;
-            this.missing.text = "Missed: "+misses;
-        }
-
-        //if the right arrow is pressed, move to the right        
-        if (this.cursor.up.isDown) {
-            isShooting = true;
-            this.mc.body.velocity.x = 0;
-            this.mc.body.velocity.y = -400;         
-        }else{
-            if (this.cursor.right.isDown && isShooting == false) {
-                this.mc.body.velocity.x = 350;
-            } else if (this.cursor.left.isDown && isShooting == false) { 
-                //if the left arrow is pressed, move to the left
-                this.mc.body.velocity.x = -350;
-            } else { //if no arrow keys are being pressed, stop moving
-                this.mc.body.velocity.x = 0;
+        if (!endFlag) {
+            game.physics.arcade.collide(this.hoop, this.mc, this.hit, null, this);
+            game.physics.arcade.collide(this.lebron, this.mc, this.blocked, null, this);
+            if(this.mc.y == 0){
+                console.log("test");
+                this.mc.x = 50;
+                this.mc.y = 4308;
+                isShooting = false;
+                misses++;
+                this.missing.text = "Missed: "+misses;
             }
-        }   
+
+            //if the right arrow is pressed, move to the right        
+            if (this.cursor.up.isDown) {
+                isShooting = true;
+                this.mc.body.velocity.x = 0;
+                this.mc.body.velocity.y = -400;         
+            }else{
+                if (this.cursor.right.isDown && isShooting == false) {
+                    this.mc.body.velocity.x = 350;
+                } else if (this.cursor.left.isDown && isShooting == false) { 
+                    //if the left arrow is pressed, move to the left
+                    this.mc.body.velocity.x = -350;
+                } else { //if no arrow keys are being pressed, stop moving
+                    this.mc.body.velocity.x = 0;
+                }
+            }
+        
+            if (time > 0) {
+                time--;
+                this.timer.text = "Time: "+ time;   
+            } else {
+                console.log("here");
+                endFlag = true;
+                this.mc.kill();
+                this.hoop.kill();
+                this.lebron.kill();
+                game.add.text(300,300, "You made " + score.toString() + " baskets", style);
+
+            }
+            
+        }
         
     },
     
