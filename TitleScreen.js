@@ -8,7 +8,8 @@ var TitleScreen = {
         game.load.image('logo', '/assets/images/Vicous Basketball.png');
         //loads an image named 'start'
         game.load.image('startgame', '/assets/images/Start Game!.png');
-        },
+        game.load.image('survivor mode', '/assets/images/survivor.png');
+    },
     
     //the create method is run after the preload method
     //it is where we set up the basics of the game, essentially what it will look like when we start the game
@@ -16,15 +17,15 @@ var TitleScreen = {
         //adds an image with image 'logo' at (290, 100)
         this.add.image(180, 20, 'logo');
         //adds a button with image 'start' at location (200, 180) that calls the method startGame when it is clicked on
-        this.start = this.add.button(195, 385, 'startgame', this.startGame, this);
+        this.start = this.add.button(320, 385, 'startgame', this.startGame, this);
         this.start.scale.x = 0.75;
         this.start.scale.y = 0.75;
         
-        this.startSurvival = this.add.button(0, 0, 'startgame', this.startSurvival, this);
+        this.startSurvival = this.add.button(75, 385, 'survivor mode', this.startSurvival, this);
         this.start.scale.x = 0.75;
         this.start.scale.y = 0.75;
         //makes the background color of the whole screen periwinkle
-        game.stage.backgroundColor = '#1C3AA7';
+        game.stage.backgroundColor = '#DF0101';
     },
 
     //this is a method we created and named ourselves
